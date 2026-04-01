@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Login | FashionHub</title>
+<meta name="description" content="Log in to your FashionHub account to access your profile, orders, and shopping cart."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@200;400;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        "primary":"#b80035","primary-container":"#e11d48","on-primary":"#ffffff",
+        "primary-fixed":"#ffdada","surface":"#f7f9fb",
+        "surface-container-low":"#f2f4f6","surface-container-lowest":"#ffffff",
+        "on-surface":"#191c1e","on-surface-variant":"#5c3f40",
+        "outline-variant":"#e5bdbe","error":"#ba1a1a","on-secondary-fixed":"#111c2d",
+      },
+      fontFamily:{"headline":["Manrope"],"body":["Inter"]},
+      borderRadius:{"DEFAULT":"1rem","lg":"2rem","full":"9999px"},
+    }},
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+  .satin-gradient { background:linear-gradient(135deg,#f0fdfa 0%,#ccfbf1 100%); }
+  .rose-gradient  { background:linear-gradient(to right,#b80035,#e11d48); }
+  .ambient-shadow { box-shadow:0 20px 40px rgba(92,63,64,.08); }
+  input:focus     { outline:2px solid #b80035 !important; outline-offset:0; }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+
+<!-- ── NAVBAR ─────────────────────────────────────────── -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm">
+  <div class="flex justify-between items-center px-8 py-4 max-w-screen-xl mx-auto">
+    <a href="index.html" class="text-2xl font-bold tracking-tighter text-rose-600 font-headline">FashionHub</a>
+    <div class="hidden md:flex gap-8 items-center font-headline tracking-widest uppercase text-xs">
+      <a href="index.html" class="text-zinc-500 hover:text-rose-600 transition-colors">Home</a>
+      <a href="contact.html" class="text-zinc-500 hover:text-rose-600 transition-colors">Contact</a>
+    </div>
+    <div class="flex items-center gap-4 text-sm font-medium">
+      <a href="login.html" class="text-rose-600 font-bold border-b-2 border-rose-600">Login</a>
+      <a href="register.html" class="text-zinc-500 hover:text-rose-600 transition-colors">Register</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MAIN ────────────────────────────────────────────── -->
+<main class="min-h-screen pt-24 pb-12 flex items-center justify-center satin-gradient px-4 relative">
+  <!-- Back link -->
+  <a href="index.html" class="absolute top-8 left-8 md:top-12 md:left-12 flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors font-headline font-bold text-xs tracking-widest uppercase z-[100] bg-white/50 backdrop-blur px-4 py-2 rounded-full shadow-sm">
+    <span class="material-symbols-outlined text-base">arrow_back</span> Back to Home
+  </a>
+
+  <div class="w-full max-w-md bg-surface-container-lowest ambient-shadow rounded-xl p-8 md:p-12 border border-white/20 backdrop-blur-xl">
+    <div class="text-center mb-10">
+      <h1 class="font-headline text-3xl md:text-4xl font-extrabold text-on-secondary-fixed tracking-tight mb-3">Welcome Back</h1>
+      <p class="text-on-surface-variant text-sm md:text-base">Enter your details to access your FashionHub account.</p>
+    </div>
+
+    <form id="login-form" class="space-y-6" novalidate>
+      <!-- Email -->
+      <div class="space-y-2">
+        <label for="email" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Email Address</label>
+        <input id="email" type="email" placeholder="name@example.com"
+          class="w-full px-6 py-4 bg-surface-container-low border-none rounded-lg transition-all text-on-surface placeholder:text-zinc-400"/>
+      </div>
+
+      <!-- Password -->
+      <div class="space-y-2">
+        <label for="password" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Password</label>
+        <div class="relative">
+          <input id="password" type="password" placeholder="••••••••"
+            class="w-full px-6 py-4 bg-surface-container-low border-none rounded-lg transition-all text-on-surface placeholder:text-zinc-400"/>
+          <button id="toggle-password" type="button"
+            class="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">visibility</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Remember + Forgot -->
+      <div class="flex items-center justify-between text-sm py-1">
+        <label class="flex items-center gap-2 cursor-pointer group">
+          <input id="remember-me" type="checkbox" class="w-4 h-4 rounded text-primary"/>
+          <span class="text-on-surface-variant">Remember Me</span>
+        </label>
+        <a href="#" class="text-primary font-semibold hover:opacity-80 transition-opacity">Forgot Password?</a>
+      </div>
+
+      <!-- Submit -->
+      <button type="submit"
+        class="w-full py-5 text-white font-headline font-bold rounded-full shadow-lg hover:opacity-90 transition-all active:scale-95"
+        style="background:linear-gradient(to right,#b80035,#e11d48);">
+        Log In
+      </button>
+    </form>
+
+    <!-- Divider -->
+    <div class="relative my-8 text-center">
+      <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-zinc-100"></div></div>
+      <span class="relative px-4 bg-surface-container-lowest text-xs font-bold text-zinc-400 uppercase tracking-widest">Or</span>
+    </div>
+
+    <!-- Register link -->
+    <div class="text-center">
+      <p class="text-on-surface-variant text-sm">
+        Don't have an account?
+        <a href="register.html" class="text-primary font-bold hover:underline underline-offset-4 ml-1">Create one</a>
+      </p>
+    </div>
+  </div>
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer class="w-full py-10 px-8 bg-zinc-50 border-t border-zinc-100">
+  <div class="flex flex-col md:flex-row justify-between items-center max-w-screen-xl mx-auto gap-4">
+    <div class="text-sm font-bold text-zinc-800">FashionHub</div>
+    <p class="text-xs text-zinc-400">© 2026 FashionHub Digital Atelier. All Rights Reserved.</p>
+    <div class="flex gap-6 text-xs text-zinc-400">
+      <a href="index.html" class="hover:text-rose-500 transition-colors">Home</a>
+      <a href="contact.html" class="hover:text-rose-500 transition-colors">Contact</a>
+      <a href="register.html" class="hover:text-rose-500 transition-colors">Register</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

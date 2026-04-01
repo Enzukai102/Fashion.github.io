@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FashionHub | Modern Elegance</title>
+<meta name="description" content="Discover the latest 2026 fashion collection. Sophisticated and classy designs curated exclusively for you at FashionHub."/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;400;600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    "primary":                "#b80035",
+                    "primary-container":      "#e11d48",
+                    "on-primary":             "#ffffff",
+                    "primary-fixed":          "#ffdada",
+                    "primary-fixed-dim":      "#ffb3b6",
+                    "on-primary-fixed":       "#40000c",
+                    "surface":                "#f7f9fb",
+                    "surface-container":      "#eceef0",
+                    "surface-container-low":  "#f2f4f6",
+                    "surface-container-lowest":"#ffffff",
+                    "on-surface":             "#191c1e",
+                    "on-surface-variant":     "#5c3f40",
+                    "outline-variant":        "#e5bdbe",
+                    "on-background":          "#191c1e",
+                    "on-secondary-fixed":     "#111c2d",
+                    "secondary":              "#545f73",
+                    "tertiary-fixed":         "#bdece2",
+                    "error":                  "#ba1a1a",
+                },
+                fontFamily: {
+                    "headline": ["Manrope","sans-serif"],
+                    "body":     ["Inter","sans-serif"],
+                },
+                borderRadius: { "DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px" },
+            },
+        },
+    }
+</script>
+<style>
+    .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; }
+    .editorial-shadow { box-shadow:0 20px 40px rgba(92,63,64,.06); }
+    .rose-gradient { background:linear-gradient(135deg,#b80035 0%,#e11d48 100%); }
+    .teal-satin-gradient { background:linear-gradient(135deg,#ccfbf1 0%,#e0e7ff 100%); }
+    .product-card { box-shadow:0 4px 20px rgba(92,63,64,.08); }
+    .add-to-cart-btn { background:linear-gradient(135deg,#b80035,#e11d48); }
+    .add-to-cart-btn:hover { opacity:.9; transform:scale(1.01); }
+    * { scroll-behavior:smooth; }
+
+    /* ── Search bar ─────────────────────────────── */
+    #search-wrapper {
+        position: relative;
+        max-width: 560px;
+        margin: 0 auto;
+    }
+    #product-search {
+        width: 100%;
+        padding: 16px 56px 16px 52px;
+        border-radius: 999px;
+        border: 2px solid #e5bdbe;
+        background: #ffffff;
+        font-family: Inter, sans-serif;
+        font-size: 15px;
+        color: #191c1e;
+        outline: none;
+        transition: border-color .25s, box-shadow .25s;
+        box-shadow: 0 4px 20px rgba(92,63,64,.06);
+    }
+    #product-search:focus {
+        border-color: #b80035;
+        box-shadow: 0 0 0 3px rgba(184,0,53,.12);
+    }
+    #search-icon {
+        position: absolute;
+        left: 18px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #906f70;
+        pointer-events: none;
+    }
+    #search-clear {
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #906f70;
+        display: none;
+        padding: 2px;
+        border-radius: 50%;
+        line-height:1;
+    }
+    #search-clear:hover { color: #b80035; }
+
+    /* Filter pills */
+    .filter-pill {
+        padding: 8px 20px;
+        border-radius: 999px;
+        border: 1.5px solid #e5bdbe;
+        background: #ffffff;
+        font-family: Inter, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: .08em;
+        color: #5c3f40;
+        cursor: pointer;
+        transition: all .25s;
+        white-space: nowrap;
+    }
+    .filter-pill:hover { border-color: #b80035; color: #b80035; }
+    .filter-pill.active {
+        background: linear-gradient(135deg,#b80035,#e11d48);
+        border-color: transparent;
+        color: #fff;
+        box-shadow: 0 4px 14px rgba(184,0,53,.28);
+    }
+
+    /* No-results state */
+    #no-results {
+        display: none;
+        text-align: center;
+        padding: 60px 20px;
+        grid-column: 1 / -1;
+    }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+
+<!-- ══ NAVBAR ═══════════════════════════════════════════ -->
+<header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm">
+<nav class="flex justify-between items-center px-6 md:px-12 py-4 max-w-screen-xl mx-auto">
+    <!-- Logo -->
+    <div class="flex items-center gap-10">
+        <a href="index.html" class="text-2xl font-bold tracking-tighter text-rose-600 font-headline">FashionHub</a>
+        <div class="hidden md:flex gap-8 font-headline tracking-widest uppercase text-xs">
+            <a href="index.html" class="text-rose-600 border-b-2 border-rose-500 pb-1">Home</a>
+            <a href="index.html#products" class="text-zinc-500 hover:text-rose-500 transition-colors">Shop</a>
+            <a href="contact.html" class="text-zinc-500 hover:text-rose-500 transition-colors">Contact</a>
+        </div>
+    </div>
+
+    <!-- Right icons + auth -->
+    <div class="flex items-center gap-4">
+        <!-- Auth links (conditionally shown by JS) -->
+        <div class="hidden lg:flex items-center gap-4 text-xs font-medium uppercase tracking-wider">
+            <a href="login.html" data-role="auth-link" class="text-zinc-500 hover:text-rose-500 transition-colors">Register / Login</a>
+            <a href="profile.html" data-role="profile-link" class="text-rose-600 font-bold hover:opacity-80 transition-opacity" style="display:none;"></a>
+            <a href="#" data-role="logout-btn" class="text-zinc-400 hover:text-rose-500 transition-colors" style="display:none;">Logout</a>
+        </div>
+
+        <!-- Icon buttons -->
+        <button class="p-2 hover:bg-surface-container-low rounded-full transition-colors" title="Profile">
+            <span class="material-symbols-outlined text-on-surface">person</span>
+        </button>
+        <button class="p-2 hover:bg-surface-container-low rounded-full transition-colors relative" title="Cart">
+            <span class="material-symbols-outlined text-on-surface">shopping_bag</span>
+            <span class="cart-badge absolute top-1 right-1 bg-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold" style="display:none;">0</span>
+        </button>
+        <button class="p-2 hover:bg-surface-container-low rounded-full transition-colors" title="Contact">
+            <span class="material-symbols-outlined text-on-surface">mail</span>
+        </button>
+    </div>
+</nav>
+</header>
+
+<main class="pt-20">
+
+<!-- ── Hero ─────────────────────────────────────────────── -->
+<section class="relative min-h-[90vh] flex items-center px-6 md:px-16 overflow-hidden">
+    <div class="absolute inset-0 teal-satin-gradient -z-10 opacity-70"></div>
+    <div class="container mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="max-w-2xl">
+            <span class="inline-block px-4 py-1 rounded-full bg-primary-fixed text-on-primary-fixed text-xs font-bold tracking-[.18em] uppercase mb-6">Edition 2026</span>
+            <h1 class="font-headline text-5xl md:text-7xl font-extrabold text-on-background leading-[1.1] tracking-tight mb-8">
+                Elevate Your Style with <span class="text-primary italic">Modern</span> Elegance
+            </h1>
+            <p class="text-on-surface-variant text-lg md:text-xl mb-12 max-w-md leading-relaxed">
+                Discover the latest 2026 fashion collection with sophisticated and classy designs exclusively for you.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a href="#products" class="px-8 py-4 rounded-full rose-gradient text-white font-semibold text-lg shadow-lg hover:scale-105 transition-transform duration-300 inline-block">Shop Collection</a>
+                <a href="contact.html" class="px-8 py-4 rounded-full bg-white/30 backdrop-blur-md border border-outline-variant/30 text-on-surface font-semibold text-lg hover:bg-white/50 transition-all duration-300 inline-block">Contact Us</a>
+            </div>
+        </div>
+        <div class="relative group">
+            <div class="absolute -inset-4 bg-primary/5 blur-3xl rounded-full"></div>
+            <img alt="High fashion model in elegant silk dress" class="relative rounded-xl editorial-shadow w-full aspect-[3/4] object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBijpGAoSuoJSSTraFr7SC4OmLPG5lmxuj77eL6pVM5Bwh6lrJV8zHvnkjVtGDO0n8D4VLKjdZ9HZCsxrQedzjgX4iTRG4zq1x7UvxF-sYZ_b3rLyz-iNquXsWr5SxsrBoNzKyQNEzVsJC8o3ktIH9Jfr8OT14wzYCkD64ENy897BVKRkX9QwXJf99hoywx2S-KhTqJGH6f-LYz2JRUPptd6Nr2pRd_LeS3zh73WYJq8lpuQtx1L5jt2FIo3WMIiw5UG7CeMmE6bXA"/>
+        </div>
+    </div>
+</section>
+
+<!-- ── Categories ─────────────────────────────────────── -->
+<section class="py-24 px-6 container mx-auto">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+        <div>
+            <p class="text-primary font-bold tracking-widest uppercase text-sm mb-2">Curated Collections</p>
+            <h2 class="font-headline text-4xl font-bold tracking-tight">The Digital Atelier</h2>
+        </div>
+        <a href="#products" class="text-on-surface-variant hover:text-primary transition-colors flex items-center gap-2 font-medium">
+            View All <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="relative group overflow-hidden rounded-xl aspect-[4/5] cursor-pointer">
+            <img alt="Women's fashion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:blur-[2px]"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7VzU0Wi1Fo0na0z2G0td7dbt1C1Tq69GolUwDeECfRIQhTAXaF8LVyUhuuu1pV0ML_imVsL4ZHzRHOKrtJYyuVekAODo15cUXHbIU3KrZjCYk6GMek0Bi0XY7KOBRC-3E--K6xnKOwaCJyDAeRpYgpU9QBKlfXyyXd1boyN3KRK9SulARJGkblTRbH_2y2gxMMkKlt6L74lLtc_ToP_qMkirb74g399ILicOfqP9SLdmeV-JSpcDHM-1Ina_0r6-GtR7pzdfX_Sk"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent"></div>
+            <div class="absolute bottom-8 left-8 right-8 p-5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg">
+                <h3 class="text-white font-headline text-xl font-bold">Women</h3>
+                <p class="text-white/80 text-sm">Timeless Elegance</p>
+            </div>
+        </div>
+        <div class="relative group overflow-hidden rounded-xl aspect-[4/5] cursor-pointer md:mt-12">
+            <img alt="Men's fashion" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:blur-[2px]"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdUD0dVphemyi6LMODPzlageXUYjWGVuV8f5lZjAMWoi8MhT0BtA56QNLEPPLS9HR7N898nPDdi91Nw_Ol0VAkYLFUstS0V0yduITIUHr13gw4yqqNT293YrhSbryq0I7sFeSnOUnsWqNfzHXjjyiSJBZr4IkGB5zAUJFSLrvV9VyFHJjIb7TUNed-X7u-5HND0waUbqUsfdPxOIKCoJhFKjVzSxbFhoJc-8usV73FasdPXM7TGW3uSmthDdL2eL3LhfAsb65_MeA"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent"></div>
+            <div class="absolute bottom-8 left-8 right-8 p-5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg">
+                <h3 class="text-white font-headline text-xl font-bold">Men</h3>
+                <p class="text-white/80 text-sm">Refined Simplicity</p>
+            </div>
+        </div>
+        <div class="relative group overflow-hidden rounded-xl aspect-[4/5] cursor-pointer">
+            <img alt="Accessories" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:blur-[2px]"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtz6NHf6XdoH2cyE242A6LEbsXXtYOmjllLSzZoQoI8SnBrvmfzeRJrAA5BZyaLESxHCSoBOy9R5lE8fk-EGgVz-3R2KzC8JYxNwSzWXUD30OGBf2yM9k3SmJqXWwv6EYMMhgJGVWuc9lMpHyQD-xWwDN9xwz1khRFWDcNmhNE9tz2kV4qME9mmpPJYi3Y1EqnMOiOBxCt6ZwbYj8KONRKvLcwT3tazU-nUtvKxn5eseWHQ-qG-fouYJwN9v0rQxLC70jJaX7t5NI"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent"></div>
+            <div class="absolute bottom-8 left-8 right-8 p-5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg">
+                <h3 class="text-white font-headline text-xl font-bold">Accessories</h3>
+                <p class="text-white/80 text-sm">The Final Touch</p>
+            </div>
+        </div>
+        <div class="relative group overflow-hidden rounded-xl aspect-[4/5] cursor-pointer md:mt-12">
+            <img alt="New Trends" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 group-hover:blur-[2px]"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP5UevDv6uFjHID7kVcWYdzXDvlZT1e1LX96MCgU3IA8a9oJP7nVyTYpiN1O14qvJd_qWvBAKUXQP-uRDl0Qb7nktOoE5Sf6RyW6Piw6aysbg7y4VwKA-wNMzkL41HvLevLQGrvVlFqwBIE3pa43w0qEMndB2Tez4luOPdOtarWiRSApcOS6O9S-y-bTRCDqM-AkZUloVGHS52KNm09VGcFKCL5qe_hZBjFLYwY0WL35MrL6Lu4dTAgRI"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent"></div>
+            <div class="absolute bottom-8 left-8 right-8 p-5 bg-white/10 backdrop-blur-xl border border-white/20 rounded-lg">
+                <h3 class="text-white font-headline text-xl font-bold">New Trend</h3>
+                <p class="text-white/80 text-sm">Forward Motion</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Product Grid ───────────────────────────────────── -->
+<section id="products" class="py-24 bg-surface-container-low">
+    <div class="container mx-auto px-6 md:px-8">
+        <div class="text-center mb-10">
+            <h2 class="font-headline text-4xl font-bold mb-4">Featured Products</h2>
+            <p class="text-on-surface-variant max-w-2xl mx-auto">Discover our most loved pieces, crafted with attention to every seam and silhouette.</p>
+        </div>
+
+        <!-- ── Search + Filter bar ─────────────────── -->
+        <div class="mb-10 space-y-5">
+            <!-- Search input -->
+            <div id="search-wrapper">
+                <span id="search-icon" class="material-symbols-outlined">search</span>
+                <input
+                    id="product-search"
+                    type="search"
+                    placeholder="Search products… e.g. blazer, dress, linen"
+                    autocomplete="off"
+                />
+                <button id="search-clear" title="Clear search">
+                    <span class="material-symbols-outlined" style="font-size:18px;">close</span>
+                </button>
+            </div>
+
+            <!-- Category filter pills -->
+            <div class="flex flex-wrap justify-center gap-3">
+                <button class="filter-pill active" data-filter="all">All</button>
+                <button class="filter-pill" data-filter="sale">🏷️ On Sale</button>
+                <button class="filter-pill" data-filter="new">✨ New Arrivals</button>
+                <button class="filter-pill" data-filter="dress">Dresses</button>
+                <button class="filter-pill" data-filter="blazer">Blazers</button>
+                <button class="filter-pill" data-filter="linen">Linen</button>
+                <button class="filter-pill" data-filter="silk">Silk</button>
+                <button class="filter-pill" data-filter="coat">Coats</button>
+            </div>
+
+            <!-- Result count -->
+            <p id="search-result-count" class="text-center text-xs font-medium text-on-surface-variant tracking-wide" style="display:none;"></p>
+        </div>
+
+        <!-- Dynamically populated by main.js -->
+        <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div id="no-results">
+                <span class="material-symbols-outlined text-6xl text-outline-variant mb-4 block" style="font-variation-settings:'FILL' 0,'wght' 100;">search_off</span>
+                <h3 class="font-headline text-2xl font-bold text-on-surface mb-2">No products found</h3>
+                <p class="text-on-surface-variant text-sm">Try a different keyword or browse all categories.</p>
+                <button onclick="document.getElementById('product-search').value='';document.querySelector('.filter-pill.active').classList.remove('active');document.querySelector('[data-filter=all]').classList.add('active');window.renderProducts('','all');" class="mt-6 px-8 py-3 rounded-full text-white font-bold text-sm" style="background:linear-gradient(135deg,#b80035,#e11d48);">Show All Products</button>
+            </div>
+        </div>
+
+        <div class="mt-16 text-center">
+            <a href="#products" class="px-12 py-4 bg-transparent border-2 border-primary text-primary font-bold rounded-full hover:bg-primary hover:text-white transition-all duration-300 inline-block">
+                Explore Entire Shop
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ── Sale Banner ───────────────────────────────────── -->
+<section class="py-24 px-6">
+    <div class="container mx-auto relative rounded-xl overflow-hidden h-[500px]">
+        <img alt="Shopping banner" class="w-full h-full object-cover"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3_Y55frLspBewdwm4HKk0iGtximGrGVrPXp6ieDh_1OZnTuV-Dqf4y-LsCqlb_aOywZ9kV_hpfC9W2M2BnnUYByz5Y0AJ9cxXwvRWiwO5WL5l2hAvH3OelmTsasJSCc5JXnXzVJAIbOW38O5UTcLifGM7BmhltEIk7i2aFvjgaBmUjhdV53RbeF2jY8TT9FSUKsUPNBFWYA0lin369NAYpYZ6Ibh3WhPRwk0GwqQBmRjc39yKE5hvemSH-sAwhEXKmGcRPbVP_Aw"/>
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center text-center p-8">
+            <div class="bg-white/10 backdrop-blur-3xl border border-white/20 p-12 rounded-xl max-w-2xl editorial-shadow">
+                <span class="text-primary-fixed-dim text-lg font-bold tracking-[.3em] uppercase mb-4 block">Limited Time Offer</span>
+                <h2 class="text-white font-headline text-5xl md:text-6xl font-extrabold mb-6 leading-tight">Summer Sale – Up to 40% Off</h2>
+                <p class="text-white/80 text-lg mb-10">Refresh your wardrobe with our curated seasonal collection before it's gone.</p>
+                <a href="#products" class="px-10 py-4 rose-gradient text-white font-bold rounded-full shadow-2xl hover:scale-105 transition-transform inline-block">Shop Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Reviews ───────────────────────────────────────── -->
+<section class="py-24 bg-surface">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <h2 class="font-headline text-4xl font-bold mb-4">Voices of Elegance</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div class="bg-surface-container-lowest p-10 rounded-xl editorial-shadow border border-outline-variant/10">
+                <div class="flex text-yellow-400 text-xl mb-6">★★★★★</div>
+                <p class="text-on-surface-variant italic mb-8 leading-relaxed text-lg">"The quality of the silk dress I ordered exceeded all my expectations. Truly an editorial experience."</p>
+                <div class="flex items-center gap-4">
+                    <img alt="Sophia" class="w-12 h-12 rounded-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtf2x-Q9M8l--XFwZtrBGjOQhUi3ppVJsXAVl_wFLiBCmlyZA-0Q4cZKve5mvKYPmshIxOaH1znOgO8uz2yMFDG-Zd6ysvXc0566IsPOR6C43KUxoGf3eEkL0KTw9ooLoXrnUCSpl5n8zYjlBZRx2Sw4VnzPbTI2R4PrXCQCAwW0l2ITKLkASMw6d-Beq7T70Z-1bZoYqDuctt04uc0P3n56k55fg-CG_lgrhLqKabR_1OMc6pxnsEmBIO_c_1Rq3bdaTJgfh05fk"/>
+                    <div>
+                        <h4 class="font-bold text-on-surface">Sophia Lauren</h4>
+                        <p class="text-xs text-on-surface-variant uppercase tracking-tighter">Fashion Stylist</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-surface-container-lowest p-10 rounded-xl editorial-shadow border border-outline-variant/10 md:translate-y-8">
+                <div class="flex text-yellow-400 text-xl mb-6">★★★★★</div>
+                <p class="text-on-surface-variant italic mb-8 leading-relaxed text-lg">"Finally a brand that understands modern minimalism. The signature blazer fits perfectly."</p>
+                <div class="flex items-center gap-4">
+                    <img alt="Marcello" class="w-12 h-12 rounded-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1PoSwTMQxBBSNlRzgrpwUp130JsgjMH5KnNvtOj0CSCCCU23Wd83FZqTjOpQK8nXKzagmCdTu7P5mNCZstdPGKjOs39jO7Svn-mNuuMsU_dRdzi8wtrv0UZSM28ZMfzi_uXQhLIPVf0Ur_26_CK1Kln-CYRMrGbofeR8JeLCVQEKv727YbytLocLjlBuxw3IGhyg1wC2G-N-37nQen52j98k6SO62eVWv4DULC3MKOHx-GQfMgz_F3JotQHlDWiyfBKbjj-FU_fw"/>
+                    <div>
+                        <h4 class="font-bold text-on-surface">Marcello Rossi</h4>
+                        <p class="text-xs text-on-surface-variant uppercase tracking-tighter">Designer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-surface-container-lowest p-10 rounded-xl editorial-shadow border border-outline-variant/10">
+                <div class="flex text-yellow-400 text-xl mb-6">★★★★★</div>
+                <p class="text-on-surface-variant italic mb-8 leading-relaxed text-lg">"Arrived in 2 days in beautiful sustainable packaging. Highly impressed with the experience."</p>
+                <div class="flex items-center gap-4">
+                    <img alt="Emma" class="w-12 h-12 rounded-full object-cover"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjISYtV8JMVg31EiWIyNfmUK1MDUyjBKqci_ROaTI-Fy4VRGijavj2WjwSXUMsdWyJ6kZnUXU2q4FO99t52faigZERXmxrjvZADQazHTCC3y_06yEHR6EKTQdt2duYhrLguKfjycbtFNd7OfwpyuOSl1MJTtki2Wy8jAO274T7EUQH4OoYej_QMOUqMwf1lcF-3j507XDDSMOOUyda-VrRSSu53twXVDPKQCVGesy78c3et9otoZzo9c3zn229lOdWK8Pth2Shf0c"/>
+                    <div>
+                        <h4 class="font-bold text-on-surface">Emma Watson</h4>
+                        <p class="text-xs text-on-surface-variant uppercase tracking-tighter">Sustainability Advocate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<!-- ── Footer ────────────────────────────────────────── -->
+<footer class="bg-zinc-50 w-full border-t border-rose-100/20 mt-20">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 md:px-12 py-16 max-w-screen-xl mx-auto">
+        <div class="space-y-6">
+            <a href="index.html" class="text-xl font-bold text-rose-600">FashionHub</a>
+            <p class="text-sm text-zinc-500 max-w-xs">Curating timeless elegance for the modern individual. Our atelier focuses on quality, sustainability, and effortless style.</p>
+        </div>
+        <div>
+            <h4 class="font-headline font-bold mb-6 text-on-surface">Explore</h4>
+            <ul class="space-y-4 text-sm">
+                <li><a href="index.html" class="text-zinc-500 hover:text-rose-500 transition-colors">Home</a></li>
+                <li><a href="contact.html" class="text-zinc-500 hover:text-rose-500 transition-colors">Contact</a></li>
+                <li><a href="register.html" class="text-zinc-500 hover:text-rose-500 transition-colors">Register</a></li>
+                <li><a href="login.html" class="text-zinc-500 hover:text-rose-500 transition-colors">Login</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-headline font-bold mb-6 text-on-surface">Customer Care</h4>
+            <ul class="space-y-4 text-sm text-zinc-500">
+                <li>Support Hours: 9AM – 6PM EST</li>
+                <li>Email: help@fashionhub.com</li>
+                <li>Call: +1 (888) HUB-STYLE</li>
+            </ul>
+        </div>
+        <div class="space-y-6">
+            <h4 class="font-headline font-bold text-on-surface">Join the Atelier</h4>
+            <p class="text-sm text-zinc-500">Subscribe for early access to new collections and exclusive editorial content.</p>
+            <form class="space-y-4" onsubmit="event.preventDefault(); this.querySelector('input').value=''; alert('Subscribed! ✨');">
+                <div class="relative">
+                    <input class="w-full bg-surface-container-low border-none rounded-lg px-4 py-3 text-sm" placeholder="Your email address" type="email"/>
+                    <button class="absolute right-2 top-2 bottom-2 px-4 bg-primary text-white rounded-md text-xs font-bold uppercase hover:bg-primary-container transition-colors" type="submit">Join</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="px-12 py-6 border-t border-rose-100/10 text-center">
+        <p class="text-xs text-zinc-400">© 2026 FashionHub. The Digital Atelier.</p>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

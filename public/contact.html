@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact Us | FashionHub</title>
+<meta name="description" content="Get in touch with FashionHub. We're here to help with orders, styling advice, and any enquiries."/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Manrope:wght@200;400;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        "primary":"#b80035","primary-container":"#e11d48","on-primary":"#ffffff",
+        "primary-fixed":"#ffdada","surface":"#f7f9fb","surface-container-low":"#f2f4f6",
+        "surface-container-lowest":"#ffffff","on-surface":"#191c1e","on-surface-variant":"#5c3f40",
+        "outline-variant":"#e5bdbe","error":"#ba1a1a","on-secondary-fixed":"#111c2d",
+      },
+      fontFamily:{"headline":["Manrope"],"body":["Inter"]},
+      borderRadius:{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},
+    }},
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 300,'GRAD' 0,'opsz' 24; }
+  .editorial-gradient { background:linear-gradient(135deg,#bdece2 0%,#f7f9fb 50%); }
+  .silk-gradient      { background:linear-gradient(135deg,#b80035 0%,#e11d48 100%); }
+  .ambient-glow       { box-shadow:0 20px 40px rgba(92,63,64,.06); }
+  .glass-panel        { background:rgba(255,255,255,.6); backdrop-filter:blur(20px); }
+  input:focus, textarea:focus { outline:2px solid #b80035 !important; }
+</style>
+</head>
+<body class="bg-surface font-body text-on-secondary-fixed">
+
+<!-- ── NAVBAR ─────────────────────────────────────────── -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl shadow-sm">
+  <div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-xl mx-auto">
+    <div class="flex items-center gap-10">
+      <a href="index.html" class="text-2xl font-bold tracking-tighter text-rose-700 font-headline">FashionHub</a>
+      <div class="hidden md:flex gap-8 font-headline tracking-tight text-sm">
+        <a href="index.html"  class="text-zinc-500 hover:text-rose-500 transition-colors">Home</a>
+        <a href="index.html#products" class="text-zinc-500 hover:text-rose-500 transition-colors">Shop</a>
+        <a href="contact.html" class="text-rose-600 font-bold border-b-2 border-rose-600">Contact</a>
+      </div>
+    </div>
+    <div class="flex items-center gap-4">
+      <div class="hidden lg:flex items-center gap-4 text-xs font-medium uppercase tracking-wider">
+        <a href="login.html" data-role="auth-link" class="text-zinc-500 hover:text-rose-500 transition-colors">Register / Login</a>
+        <a href="profile.html" data-role="profile-link" class="text-rose-600 font-bold" style="display:none;"></a>
+        <a href="#" data-role="logout-btn" class="text-zinc-400 hover:text-rose-500" style="display:none;">Logout</a>
+      </div>
+      <button class="hover:opacity-80 transition-all" title="Profile">
+        <span class="material-symbols-outlined text-rose-600">person</span>
+      </button>
+      <button class="hover:opacity-80 transition-all" title="Cart">
+        <span class="material-symbols-outlined text-rose-600">shopping_bag</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MAIN ────────────────────────────────────────────── -->
+<main class="relative pt-32 pb-20 overflow-hidden">
+  <div class="absolute top-0 left-0 w-full h-[600px] editorial-gradient -z-10 opacity-60"></div>
+
+  <div class="max-w-screen-xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
+
+    <!-- Left: Contact Info -->
+    <div class="space-y-12">
+      <div class="space-y-4">
+        <h1 class="font-headline text-5xl md:text-6xl font-extrabold tracking-tight text-on-secondary-fixed">
+          Get in <span class="text-primary italic font-medium">Touch</span>
+        </h1>
+        <p class="text-on-surface-variant text-lg tracking-wide uppercase font-body">We would love to hear from you.</p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6">
+        <!-- Visit -->
+        <div class="glass-panel p-8 rounded-xl ambient-glow group hover:scale-[1.02] transition-transform duration-500">
+          <div class="flex items-start gap-6">
+            <div class="w-12 h-12 rounded-full silk-gradient flex items-center justify-center text-white shadow-lg flex-shrink-0">
+              <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">location_on</span>
+            </div>
+            <div>
+              <h3 class="font-headline font-bold text-xl tracking-tight">Visit Us</h3>
+              <p class="text-on-surface-variant mt-1">123 Atelier Way, Paris, France</p>
+            </div>
+          </div>
+        </div>
+        <!-- Call -->
+        <div class="glass-panel p-8 rounded-xl ambient-glow group hover:scale-[1.02] transition-transform duration-500">
+          <div class="flex items-start gap-6">
+            <div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary border border-outline-variant/30 flex-shrink-0">
+              <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">call</span>
+            </div>
+            <div>
+              <h3 class="font-headline font-bold text-xl tracking-tight">Call Us</h3>
+              <p class="text-on-surface-variant mt-1">+1 (800) FASHION · Mon–Fri 9AM–6PM EST</p>
+            </div>
+          </div>
+        </div>
+        <!-- Email -->
+        <div class="glass-panel p-8 rounded-xl ambient-glow group hover:scale-[1.02] transition-transform duration-500">
+          <div class="flex items-start gap-6">
+            <div class="w-12 h-12 rounded-full bg-surface-container-low flex items-center justify-center text-primary border border-outline-variant/30 flex-shrink-0">
+              <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">mail</span>
+            </div>
+            <div>
+              <h3 class="font-headline font-bold text-xl tracking-tight">Email Us</h3>
+              <p class="text-on-surface-variant mt-1">support@fashionhub.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accent image -->
+      <div class="relative w-full aspect-video rounded-xl overflow-hidden ambient-glow transform rotate-1">
+        <img alt="Fashion Atelier interior" class="w-full h-full object-cover"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsoLTKNm1YRlpJQ5ho2A2MywO5DyA83aY1V35UnroAUri5IfYUR6iLHnM_zFT_3-GdhT2esnGdg7hulug6HIRLG_l9020oKVurr8X6FkHd3sTfrbDxX8AwrvJWRIvhrLJnOHe_psjGMCKGymSG11YQQTFw-SAivmuwcl4MJaS8mD9v66xQ8dpKLN4S6nT37NOygJTan8WwLC-LqEWsCMwr8ZMKNld0AS1AjVD58ln9fcLp6zNM4O1GfT621Ly1Nhgi39lLsZ1ax5A"/>
+        <div class="absolute inset-0 bg-primary/10 mix-blend-overlay"></div>
+      </div>
+    </div>
+
+    <!-- Right: Contact Form -->
+    <div class="lg:sticky lg:top-32">
+      <div class="bg-surface-container-lowest p-10 md:p-12 rounded-xl ambient-glow border border-white/40">
+        <div class="mb-10 text-center lg:text-left">
+          <h2 class="font-headline text-3xl font-bold tracking-tight mb-2">Send a Message</h2>
+          <div class="h-1 w-20 bg-primary rounded-full mx-auto lg:mx-0 opacity-20"></div>
+        </div>
+
+        <form id="contact-form" class="space-y-6" novalidate>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label for="contact-name" class="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">Full Name <span class="text-primary">*</span></label>
+              <input id="contact-name" type="text" placeholder="Jane Doe"
+                class="w-full px-5 py-4 rounded-lg bg-surface-container-low border-none transition-all placeholder:text-zinc-400"/>
+            </div>
+            <div class="space-y-2">
+              <label for="contact-email" class="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">Email Address <span class="text-primary">*</span></label>
+              <input id="contact-email" type="email" placeholder="jane@example.com"
+                class="w-full px-5 py-4 rounded-lg bg-surface-container-low border-none transition-all placeholder:text-zinc-400"/>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label for="contact-subject" class="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">Subject <span class="text-primary">*</span></label>
+            <input id="contact-subject" type="text" placeholder="Order Inquiry"
+              class="w-full px-5 py-4 rounded-lg bg-surface-container-low border-none transition-all placeholder:text-zinc-400"/>
+          </div>
+
+          <div class="space-y-2">
+            <label for="contact-message" class="text-xs font-bold uppercase tracking-widest text-zinc-500 ml-1">Message <span class="text-primary">*</span></label>
+            <textarea id="contact-message" rows="5" placeholder="How can we assist you?"
+              class="w-full px-5 py-4 rounded-lg bg-surface-container-low border-none transition-all placeholder:text-zinc-400 resize-none"></textarea>
+          </div>
+
+          <button type="submit"
+            class="w-full silk-gradient text-white font-headline font-bold py-5 rounded-full shadow-lg hover:shadow-rose-900/20 hover:scale-[1.02] transition-all duration-300 uppercase tracking-widest text-sm">
+            Send Message
+          </button>
+        </form>
+
+        <div class="mt-6 text-center">
+          <p class="text-zinc-400 text-sm italic">Our team typically responds within 24 business hours.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer class="w-full rounded-t-[2rem] mt-20 bg-zinc-50">
+  <div class="flex flex-col md:flex-row justify-between items-start w-full px-10 py-14 max-w-screen-xl mx-auto gap-10">
+    <div class="space-y-4 max-w-xs">
+      <span class="text-lg font-bold text-zinc-900 font-headline">FashionHub</span>
+      <p class="text-zinc-500 text-sm leading-relaxed">Curating elegance for the modern soul. Join our digital atelier for exclusive collections and timeless style.</p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-10">
+      <div class="space-y-4">
+        <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-900">Shop</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="index.html" class="text-zinc-500 hover:text-rose-500 transition-colors text-sm">Home</a>
+          <a href="index.html#products" class="text-zinc-500 hover:text-rose-500 transition-colors text-sm">Products</a>
+        </nav>
+      </div>
+      <div class="space-y-4">
+        <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-900">Account</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="login.html" class="text-zinc-500 hover:text-rose-500 transition-colors text-sm">Login</a>
+          <a href="register.html" class="text-zinc-500 hover:text-rose-500 transition-colors text-sm">Register</a>
+          <a href="profile.html" class="text-zinc-500 hover:text-rose-500 transition-colors text-sm">Profile</a>
+        </nav>
+      </div>
+      <div class="space-y-4">
+        <h4 class="text-xs font-bold uppercase tracking-widest text-zinc-900">Legal</h4>
+        <nav class="flex flex-col gap-2">
+          <a href="#" class="text-zinc-500 hover:text-rose-500 transition-colors text-sm">Privacy</a>
+          <a href="#" class="text-zinc-500 hover:text-rose-500 transition-colors text-sm">Terms</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="w-full px-10 py-6 border-t border-zinc-200">
+    <p class="text-center text-xs uppercase tracking-widest text-zinc-400">© 2026 FashionHub. Designed for the Digital Atelier.</p>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

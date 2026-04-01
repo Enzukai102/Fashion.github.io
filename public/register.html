@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Join FashionHub | Create Account</title>
+<meta name="description" content="Create a FashionHub account to explore premium fashion collections and manage your orders."/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    theme: { extend: {
+      colors: {
+        "primary":"#b80035","primary-container":"#e11d48","on-primary":"#ffffff",
+        "primary-fixed":"#ffdada","primary-fixed-dim":"#ffb3b6","on-primary-fixed":"#40000c",
+        "surface":"#f7f9fb","surface-container-low":"#f2f4f6","surface-container-lowest":"#ffffff",
+        "surface-container":"#eceef0","on-surface":"#191c1e","on-surface-variant":"#5c3f40",
+        "outline":"#906f70","outline-variant":"#e5bdbe","secondary-fixed":"#d8e3fb",
+        "tertiary-fixed":"#bdece2","error":"#ba1a1a","secondary":"#545f73",
+        "on-secondary-fixed":"#111c2d",
+      },
+      fontFamily:{ "headline":["Manrope"], "body":["Inter"] },
+      borderRadius:{"DEFAULT":"1rem","lg":"2rem","xl":"3rem","full":"9999px"},
+    }},
+  }
+</script>
+<style>
+  .material-symbols-outlined { font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24; }
+  .satin-gradient { background:linear-gradient(135deg,#bdece2 0%,#d8e3fb 100%); }
+  .rose-gradient  { background:linear-gradient(to right,#b80035,#e11d48); }
+  .ambient-glow   { box-shadow:0 20px 40px rgba(92,63,64,.08); }
+  input:focus     { outline:2px solid #b80035 !important; }
+  .strength-bar   { height:4px; border-radius:2px; background:#e5bdbe; transition:background .3s; flex:1; }
+</style>
+</head>
+<body class="bg-surface font-body text-on-surface">
+
+<!-- ── NAVBAR ─────────────────────────────────────────── -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-xl shadow-sm">
+  <div class="flex justify-between items-center w-full px-8 py-4 max-w-screen-xl mx-auto">
+    <a href="index.html" class="text-2xl font-bold tracking-tighter text-rose-600 font-headline">FashionHub</a>
+    <div class="hidden md:flex gap-8 items-center font-headline tracking-widest uppercase text-xs">
+      <a href="index.html" class="text-zinc-500 hover:text-rose-600 transition-colors">Home</a>
+      <a href="contact.html" class="text-zinc-500 hover:text-rose-600 transition-colors">Contact</a>
+    </div>
+    <div class="flex items-center gap-4 text-sm font-medium">
+      <a href="login.html" class="text-rose-600 font-bold border-b-2 border-rose-600">Login</a>
+      <a href="register.html" class="text-zinc-500 hover:text-rose-600 transition-colors">Register</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── MAIN ────────────────────────────────────────────── -->
+<main class="min-h-screen pt-24 pb-12 flex items-center justify-center relative overflow-hidden">
+  <!-- Back link -->
+  <a href="index.html" class="absolute top-8 left-8 md:top-12 md:left-12 flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors font-headline font-bold text-xs tracking-widest uppercase z-[100] bg-white/50 backdrop-blur px-4 py-2 rounded-full shadow-sm">
+    <span class="material-symbols-outlined text-base">arrow_back</span> Back to Home
+  </a>
+
+  <!-- Decorative blobs -->
+  <div class="absolute inset-0 satin-gradient -z-10 opacity-40"></div>
+  <div class="absolute top-[-10%] right-[-5%] w-96 h-96 rounded-full bg-tertiary-fixed blur-3xl opacity-30 -z-10"></div>
+  <div class="absolute bottom-[-10%] left-[-5%] w-96 h-96 rounded-full bg-secondary-fixed blur-3xl opacity-30 -z-10"></div>
+
+  <section class="container mx-auto px-4 flex flex-col items-center">
+    <div class="w-full max-w-2xl bg-surface-container-lowest/80 backdrop-blur-2xl rounded-xl p-8 md:p-12 ambient-glow">
+      <div class="text-center mb-10">
+        <h1 class="font-headline text-4xl md:text-5xl font-extrabold tracking-tight mb-3 text-on-secondary-fixed">Join the Digital Atelier</h1>
+        <p class="text-on-surface-variant font-medium">Create an account to explore premium collections.</p>
+      </div>
+
+      <form id="register-form" class="space-y-6" novalidate>
+        <!-- Name + Email -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-2">
+            <label for="reg-name" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Full Name <span class="text-primary">*</span></label>
+            <input id="reg-name" type="text" placeholder="Evelyn Grace"
+              class="w-full px-5 py-4 rounded-lg bg-surface-container-low border-none transition-all placeholder:text-outline/50"/>
+          </div>
+          <div class="space-y-2">
+            <label for="reg-email" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Email Address <span class="text-primary">*</span></label>
+            <input id="reg-email" type="email" placeholder="evelyn@atelier.com"
+              class="w-full px-5 py-4 rounded-lg bg-surface-container-low border-none transition-all placeholder:text-outline/50"/>
+          </div>
+        </div>
+
+        <!-- Phone -->
+        <div class="space-y-2">
+          <label for="reg-phone" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Phone <span class="text-zinc-400">(optional)</span></label>
+          <input id="reg-phone" type="tel" placeholder="+1 (555) 000-0000"
+            class="w-full px-5 py-4 rounded-lg bg-surface-container-low border-none transition-all placeholder:text-outline/50"/>
+        </div>
+
+        <!-- Password + Confirm -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="space-y-2">
+            <label for="reg-password" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Password <span class="text-primary">*</span></label>
+            <input id="reg-password" type="password" placeholder="At least 8 characters"
+              class="w-full px-5 py-4 rounded-lg bg-surface-container-low border-none transition-all placeholder:text-outline/50"/>
+            <!-- Strength bars -->
+            <div class="flex gap-1 mt-2 px-1">
+              <div class="strength-bar"></div>
+              <div class="strength-bar"></div>
+              <div class="strength-bar"></div>
+            </div>
+            <p id="strength-label" class="text-xs ml-1 font-semibold text-outline" data-strength=""></p>
+          </div>
+          <div class="space-y-2">
+            <label for="reg-confirm" class="block text-xs font-bold uppercase tracking-widest text-on-surface-variant ml-1">Confirm Password <span class="text-primary">*</span></label>
+            <input id="reg-confirm" type="password" placeholder="Repeat your password"
+              class="w-full px-5 py-4 rounded-lg bg-surface-container-low border-none transition-all placeholder:text-outline/50"/>
+          </div>
+        </div>
+
+        <!-- Terms -->
+        <div class="flex items-center gap-3 px-1 py-2">
+          <input id="terms" type="checkbox" class="w-5 h-5 rounded border-outline-variant text-primary"/>
+          <label for="terms" class="text-sm text-on-surface-variant">
+            I agree to the <a href="#" class="text-primary font-semibold hover:underline">Terms and Conditions</a>
+          </label>
+        </div>
+
+        <button type="submit"
+          class="w-full py-5 rounded-full text-white font-headline font-bold text-lg tracking-widest uppercase hover:opacity-90 transition-all shadow-lg active:scale-95"
+          style="background:linear-gradient(to right,#b80035,#e11d48);">
+          Create Account
+        </button>
+      </form>
+
+      <div class="mt-8 text-center">
+        <p class="text-on-surface-variant text-sm">
+          Already have an account?
+          <a href="login.html" class="text-primary font-bold ml-1 hover:underline">Log In</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Lookbook images -->
+    <div class="hidden lg:grid grid-cols-3 gap-8 mt-24 w-full max-w-5xl px-4">
+      <div class="rounded-xl overflow-hidden h-64 translate-y-8 shadow-xl">
+        <img class="w-full h-full object-cover"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAt1hHqerHAKuUL4tyKZJqwpOl8FWIrPSfTll2U80QoWfrUKSd2yPvpmkk_2-YzyZXKpG2WeW4Rtiq3NAJzkNi-8lr2BZZWMkGQujlxXTzaQCxl6Z6u8U1EV3WzI4PJy9SSv9CSWymo2nqDTqQ_8FFKwWi354SdSnKkFLZzJYVmL9qpVgUEeZ5JVW2T_VLo3VC8XX7Py1zvjvvAUHJCXaQ6QAfdv5d6iDS7wHuMPYdLORTvCszJ9V5hO1YGOOD8QjnvinrxwM4qyiY"
+          alt="Fashion model"/>
+      </div>
+      <div class="rounded-xl overflow-hidden h-64 -translate-y-8 shadow-xl">
+        <img class="w-full h-full object-cover"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAToPhx2yWkuGhqUwjlIKpeIUWO8JgcdCafzQJXD6jhIHD0xD7UHNyZrUBZimWNxlX7oZb2jDehxI8qIXnIhfDN7sVwgLmuQOcAU3UDVZ8t7UOSZEKi9WjWCDr7c1ILyxuyN4gpsNj4BhulzdClCmhdYUZ9F6xxIM2D6P2pMzQvX2YhQSKHa0Hu0rpgZhLhnWCnp99X5ExfUTv_QKYsXXc6GtGKkFJzhPzW2STYx-MxiSeoEefxN3Q9qeULkpusyztYv0HXm8QQbpE"
+          alt="Fashion rack"/>
+      </div>
+      <div class="rounded-xl overflow-hidden h-64 translate-y-12 shadow-xl">
+        <img class="w-full h-full object-cover"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtt6nl2duO_ULNYqS0HskAwL3RYJShFkQ8WB-NbtYPWcBn2ALWCurfpRnq1Zzf_x2jy0VAjYxnSNQZbCCRnkkSjXE6NIo3_XTiP6f0_RZeyt_QJswtBJ1e69lT9vAwNuI1s8WjUuaxuC9gRiM7VUh5O2L5-eJmN8-fBIXtAvqMw2zC_8-D7jerxS12ynnp0XXchiYQxBT0NJcjTqD5JBpHTjrJ3_agVgSN9eS2YL4vPmfBfVsxQEXAl2CqF0DhSDq6dezphLpmPYk"
+          alt="Fabric detail"/>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer class="bg-zinc-50 w-full rounded-t-[2rem] mt-20">
+  <div class="flex flex-col md:flex-row justify-between items-center w-full px-12 py-12 gap-6 max-w-screen-xl mx-auto">
+    <div>
+      <div class="text-lg font-bold text-zinc-900">FashionHub</div>
+      <p class="text-xs text-zinc-500 mt-1">© 2026 FashionHub Digital Atelier. All Rights Reserved.</p>
+    </div>
+    <div class="flex gap-8 text-xs text-zinc-500">
+      <a href="index.html" class="hover:text-rose-600 transition-colors">Home</a>
+      <a href="contact.html" class="hover:text-rose-600 transition-colors">Contact</a>
+      <a href="login.html" class="hover:text-rose-600 transition-colors">Login</a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
